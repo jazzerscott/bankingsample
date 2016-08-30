@@ -19,7 +19,7 @@ namespace Prototype.Banking
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            // get rid of xml formatter so we can see json in browser, and do camel case name resolution
             HttpConfiguration config = GlobalConfiguration.Configuration;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
