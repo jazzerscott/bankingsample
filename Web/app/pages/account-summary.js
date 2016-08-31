@@ -15,14 +15,18 @@ var AccountSummaryComponent = (function () {
         this._accountProvider = _accountProvider;
         this.pageTitle = 'Account Summary';
     }
+    AccountSummaryComponent.prototype.setAccounts = function (accounts) {
+        this.deposits = accounts.filter(function (value) { return value.accountType === "Savings" || value.accountType === "Checking"; });
+        this.loans = accounts.filter(function (value) { return value.accountType === "Loan"; });
+    };
     AccountSummaryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._accountProvider.getAccounts()
-            .subscribe(function (accounts) { return _this.accounts = accounts; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (accounts) { return _this.setAccounts(accounts); }, function (error) { return _this.errorMessage = error; });
     };
     AccountSummaryComponent = __decorate([
         core_1.Component({
-            template: "\n    <div class='panel panel-primary'>\n        <div class='panel-heading'>\n            Account Summary\n        </div>\n        <div class='table-responsive'>\n            <table class='table'>\n                <thead>\n                    <tr>\n                        <th>Account Number</th>\n                        <th>Name</th>\n                        <th>Balance</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr *ngFor='let account of accounts'>\n                        \n                        <td> \n                            {{account.id}}\n                        </td>\n                        <td>{{ account.description }}</td>\n                        <td>{{ account.balance | currency:'USD':true:'1.2-2' }}</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n   "
+            template: "\n    <div>\n        <bank-account-list title=\"Deposit Accounts\"  [accounts]='deposits'></bank-account-list>\n        <bank-account-list title=\"Loans\" [accounts]='loans'></bank-account-list>\n    </div>\n   "
         }), 
         __metadata('design:paramtypes', [account_provider_1.AccountProvider])
     ], AccountSummaryComponent);

@@ -8,10 +8,10 @@ import { AccountSummaryComponent } from './pages/account-summary';
 import { AccountDetailComponent } from './pages/account-detail';
 import { PageNotFoundComponent } from './pages/page-not-found';
 import { ContactUsComponent } from './pages/contact-us';
-
+import { AccountListComponent } from './components/account-list';
 @NgModule({
    imports: [BrowserModule, routing],
-   declarations: [AppComponent, PageNotFoundComponent, AccountDetailComponent, ContactUsComponent, AccountSummaryComponent],
+   declarations: [AppComponent, PageNotFoundComponent, AccountDetailComponent, ContactUsComponent, AccountSummaryComponent, AccountListComponent],
    bootstrap: [ AppComponent ],
    providers: [appRoutingProviders, AccountProvider, HTTP_PROVIDERS],
 

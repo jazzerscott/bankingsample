@@ -7,19 +7,25 @@ import { IAccount } from './account';
 @Injectable()
 export class AccountProvider {
     private _accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
-
+    private _accountCache: IAccount[] = null;
     constructor(private _http: Http) { }
 
     getAccounts(): Observable<IAccount[]> {
+        if(this._accountCache != null ){
+            return Observable.of(this._accountCache);
+        }
         return this._http.get(this._accountUrl)
             .map((response: Response) => <IAccount[]> response.json())
-            .do(data => console.log('All: ' +  JSON.stringify(data)))
+            .do(data => this._accountCache = data)
             .catch(this.handleError);
     }
 
     getAccountt(id: string): Observable<IAccount> {
         return this.getAccounts()
             .map((accounts: IAccount[]) => accounts.find(p => p.id === id));
+    }
+    flushAccountCache(): void {
+        this._accountCache=null;
     }
 
     private handleError(error: Response) {

@@ -15,16 +15,24 @@ var AccountProvider = (function () {
     function AccountProvider(_http) {
         this._http = _http;
         this._accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
+        this._accountCache = null;
     }
     AccountProvider.prototype.getAccounts = function () {
+        var _this = this;
+        if (this._accountCache != null) {
+            return Observable_1.Observable.of(this._accountCache);
+        }
         return this._http.get(this._accountUrl)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .do(function (data) { return _this._accountCache = data; })
             .catch(this.handleError);
     };
     AccountProvider.prototype.getAccountt = function (id) {
         return this.getAccounts()
             .map(function (accounts) { return accounts.find(function (p) { return p.id === id; }); });
+    };
+    AccountProvider.prototype.flushAccountCache = function () {
+        this._accountCache = null;
     };
     AccountProvider.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
