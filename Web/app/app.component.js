@@ -9,13 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+require('rxjs/Rx'); // Load all features
 var AppComponent = (function () {
     function AppComponent() {
+        this.pageTitle = "Banking";
     }
     AppComponent = __decorate([
+        // Load all features
         core_1.Component({
             selector: 'banking-app',
-            template: '<h1>hello angular 2</h1>'
+            template: "\n        <div>\n        <nav class=\"navbar navbar-default\">\n             <div class=\"container-fluid\">\n                <a class=\"navbar-brand\">{{title}}</a>\n                <ul class=\"nav navbar-nav\">\n                    <li><a routerLink=\"/accounts\" routerLinkActive=\"active\">Accounts</a></li>\n                    <li><a routerLink=\"/contact\" routerLinkActive=\"active\">Contact Us</a></li>\n                </ul>\n            </div>\n            \n            \n        </nav>\n        </div>\n        <div class=\"container\">\n            <router-outlet></router-outlet>\n        </div>\n        "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
