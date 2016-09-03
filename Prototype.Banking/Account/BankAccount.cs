@@ -11,6 +11,7 @@ namespace Prototype.Banking.Account
         public string Description { get; set; }
         public decimal Balance { get; set; }
         public string AccountType { get; set; }
+       
 
     }
 }

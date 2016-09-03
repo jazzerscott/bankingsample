@@ -9,9 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var account_provider_1 = require('./providers/account-provider');
+var user_provider_1 = require('./providers/user-provider');
 var app_routing_1 = require('./app.routing');
 var http_1 = require('@angular/http');
 var account_summary_1 = require('./pages/account-summary');
@@ -19,15 +21,17 @@ var account_detail_1 = require('./pages/account-detail');
 var page_not_found_1 = require('./pages/page-not-found');
 var contact_us_1 = require('./pages/contact-us');
 var account_list_1 = require('./components/account-list');
+var login_1 = require('./pages/login');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
-            declarations: [app_component_1.AppComponent, page_not_found_1.PageNotFoundComponent, account_detail_1.AccountDetailComponent, contact_us_1.ContactUsComponent, account_summary_1.AccountSummaryComponent, account_list_1.AccountListComponent],
+            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, forms_1.FormsModule],
+            declarations: [app_component_1.AppComponent, page_not_found_1.PageNotFoundComponent, account_detail_1.AccountDetailComponent,
+                contact_us_1.ContactUsComponent, account_summary_1.AccountSummaryComponent, account_list_1.AccountListComponent, login_1.LoginComponent],
             bootstrap: [app_component_1.AppComponent],
-            providers: [app_routing_1.appRoutingProviders, account_provider_1.AccountProvider, http_1.HTTP_PROVIDERS],
+            providers: [app_routing_1.appRoutingProviders, account_provider_1.AccountProvider, http_1.HTTP_PROVIDERS, user_provider_1.UserProvider],
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

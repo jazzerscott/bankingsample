@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var user_provider_1 = require("./providers/user-provider");
 require('rxjs/Rx'); // Load all features
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_userProvider) {
+        this._userProvider = _userProvider;
         this.pageTitle = "Banking";
     }
+    AppComponent.prototype.onLogOut = function () {
+        this._userProvider.logOut();
+    };
     AppComponent = __decorate([
         // Load all features
         core_1.Component({
             selector: 'banking-app',
-            template: "\n        <div>\n        <nav class=\"navbar navbar-default\">\n             <div class=\"container-fluid\">\n                <a class=\"navbar-brand\">{{title}}</a>\n                <ul class=\"nav navbar-nav\">\n                    <li><a routerLink=\"/accounts\" routerLinkActive=\"active\">Accounts</a></li>\n                    <li><a routerLink=\"/contact\" routerLinkActive=\"active\">Contact Us</a></li>\n                </ul>\n            </div>\n            \n            \n        </nav>\n        </div>\n        <div class=\"container\">\n            <router-outlet></router-outlet>\n        </div>\n        "
+            template: "\n        <div>\n        <nav class=\"navbar navbar-default\">\n             <div class=\"container-fluid\">\n                <a class=\"navbar-brand\">{{title}}</a>\n                <ul class=\"nav navbar-nav\">\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a routerLink=\"/accounts\" routerLinkActive=\"active\">Accounts</a></li>\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a routerLink=\"/contact\" routerLinkActive=\"active\">Contact Us</a></li>\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a href=\"#\" (click)=\"onLogOut()\">Log Out</a></li>\n                </ul>\n            </div>\n        </nav>\n        </div>\n        <div class=\"container\">\n            <router-outlet></router-outlet>\n        </div>\n        "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [user_provider_1.UserProvider])
     ], AppComponent);
     return AppComponent;
 }());
