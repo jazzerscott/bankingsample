@@ -9,3 +9,5 @@ To install / setup:
 4: In the web folder from a command line run "npm install"
 
 5: If all goes well with that run "npm start"  This should start the angular project on localhost:3000.  The asp.net web api uses CORS to allow ajax requests from localhost:3000.
+
+6.  Login = test / password

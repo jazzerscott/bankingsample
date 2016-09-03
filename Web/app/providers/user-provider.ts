@@ -28,7 +28,7 @@ export class UserProvider {
             })
             .catch(this.handleError);
     }
-
+    
     isLoggedIn() {
         return this._user !== null;
     }
