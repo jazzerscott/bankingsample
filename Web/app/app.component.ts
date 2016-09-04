@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
 import { UserProvider } from "./providers/user-provider"
 //import 'rxjs/Rx';   // Load all features
 import 'rxjs/add/observable/throw';

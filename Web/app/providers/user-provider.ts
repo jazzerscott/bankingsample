@@ -15,7 +15,7 @@ export class UserProvider {
         //console.log(this._user.firstName+' '+this._user.lastName);
     }
 
-    authenticate(userName: string,password: string): Observable<IAuthenticationResponse> {
+    authenticate(userName: string,password: string): Observable<boolean> {
         console.log('authenticate: '+userName);
         return this._http.post(this._authUrl,{"userName": userName, "password": password })
             .map((response: Response) => {

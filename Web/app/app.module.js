@@ -28,11 +28,11 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, forms_1.FormsModule],
+            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, forms_1.FormsModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent, page_not_found_1.PageNotFoundPage, account_detail_1.AccountDetailComponent,
                 contact_us_1.ContactUsPage, account_summary_1.AccountSummaryPage, account_list_1.AccountListComponent, login_1.LoginPage, account_history_1.AccountHistoryPage],
             bootstrap: [app_component_1.AppComponent],
-            providers: [app_routing_1.appRoutingProviders, account_provider_1.AccountProvider, http_1.HTTP_PROVIDERS, user_provider_1.UserProvider],
+            providers: [app_routing_1.appRoutingProviders, account_provider_1.AccountProvider, user_provider_1.UserProvider],
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
