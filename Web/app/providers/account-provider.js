@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
+var user_provider_1 = require('./user-provider');
 var AccountProvider = (function () {
-    function AccountProvider(_http) {
+    function AccountProvider(_http, _userProvider) {
         this._http = _http;
+        this._userProvider = _userProvider;
         this._accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
         this._accountCache = null;
     }
@@ -22,7 +24,13 @@ var AccountProvider = (function () {
         if (this._accountCache != null) {
             return Observable_1.Observable.of(this._accountCache);
         }
-        return this._http.get(this._accountUrl)
+        var user = this._userProvider.getCurrentUser();
+        var headers = new http_1.Headers();
+        if (user != null) {
+            headers.append('AuthToken', user.authToken);
+        }
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.get(this._accountUrl, options)
             .map(function (response) { return response.json(); })
             .do(function (data) { return _this._accountCache = data; })
             .catch(this.handleError);
@@ -42,7 +50,7 @@ var AccountProvider = (function () {
     };
     AccountProvider = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, user_provider_1.UserProvider])
     ], AccountProvider);
     return AccountProvider;
 }());

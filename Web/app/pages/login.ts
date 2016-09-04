@@ -10,7 +10,7 @@ import { UserProvider } from '../providers/user-provider';
         <input type="text" id="txtUser" name="txtUser" class="form-control" placeholder="User Name" required="" autofocus="" [(ngModel)]="userName" />
         <label for="txtPassword" class="sr-only" >Password</label>
         <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Password" required=""   [(ngModel)]="password"  />
-        <button class="btn btn-lg btn-primary btn-block" type="button" (click)="onLogIn()">Log In</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onLogIn()">Log In</button>
       </form>
    `
 })

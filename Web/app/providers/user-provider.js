@@ -35,6 +35,9 @@ var UserProvider = (function () {
         })
             .catch(this.handleError);
     };
+    UserProvider.prototype.getCurrentUser = function () {
+        return this._user;
+    };
     UserProvider.prototype.isLoggedIn = function () {
         return this._user !== null;
     };

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Prototype.Banking.User;
+using Prototype.Banking.Users;
 using System.Web.Http.Cors;
 
 namespace Prototype.Banking.Controllers

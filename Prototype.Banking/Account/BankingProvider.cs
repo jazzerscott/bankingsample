@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Prototype.Banking.Users;
 namespace Prototype.Banking.Account
 {
     public class BankingProvider
@@ -18,8 +18,12 @@ namespace Prototype.Banking.Account
             }
             return _instance;
         }
-        public List<BankAccount> GetAccounts()
+        public List<BankAccount> GetAccounts(User user)
         {
+            if(user == null)
+            {
+                return new List<BankAccount>();
+            }
             List<BankAccount> accounts = new List<BankAccount>();
             accounts.Add(new BankAccount()
             {

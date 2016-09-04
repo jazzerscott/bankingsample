@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
+import { UserProvider } from './user-provider';
+import { IUser } from './user';
 import { IAccount } from './account';
 
 @Injectable()
 export class AccountProvider {
     private _accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
     private _accountCache: IAccount[] = null;
-    constructor(private _http: Http) { }
+    constructor(private _http: Http, private _userProvider: UserProvider) { }
 
     getAccounts(): Observable<IAccount[]> {
         if(this._accountCache != null ){
             return Observable.of(this._accountCache);
         }
-        return this._http.get(this._accountUrl)
+        let user = this._userProvider.getCurrentUser();
+        let headers = new Headers();
+        if(user != null) {
+            headers.append('AuthToken', user.authToken);
+        }
+        let options = new RequestOptions({ headers: headers });
+        return this._http.get(this._accountUrl, options)
             .map((response: Response) => <IAccount[]> response.json())
             .do(data => this._accountCache = data)
             .catch(this.handleError);

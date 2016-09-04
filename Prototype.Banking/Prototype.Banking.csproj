@@ -205,10 +205,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\AuthenticationRequest.cs" />
-    <Compile Include="User\AuthenticationResponse.cs" />
-    <Compile Include="User\User.cs" />
-    <Compile Include="User\UserManager.cs" />
+    <Compile Include="Users\AuthenticationRequest.cs" />
+    <Compile Include="Users\AuthenticationResponse.cs" />
+    <Compile Include="Users\User.cs" />
+    <Compile Include="Users\UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

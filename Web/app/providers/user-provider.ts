@@ -28,8 +28,10 @@ export class UserProvider {
             })
             .catch(this.handleError);
     }
-    
-    isLoggedIn() {
+    getCurrentUser(): IUser {
+        return this._user;
+    }
+    isLoggedIn(): boolean {
         return this._user !== null;
     }
     canActivate() {
@@ -45,6 +47,7 @@ export class UserProvider {
         this._user = null;
         window.sessionStorage.removeItem('user');
         this._router.navigate(['/login']);
+       
     }
 
     private handleError(error: Response) {
