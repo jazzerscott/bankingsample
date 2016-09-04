@@ -10,7 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var user_provider_1 = require("./providers/user-provider");
-require('rxjs/Rx'); // Load all features
+//import 'rxjs/Rx';   // Load all features
+require('rxjs/add/observable/throw');
+// Operators
+require('rxjs/add/operator/catch');
+//import 'rxjs/add/operator/debounceTime';
+//import 'rxjs/add/operator/distinctUntilChanged';
+require('rxjs/add/operator/map');
+//import 'rxjs/add/operator/switchMap';
+//import 'rxjs/add/operator/toPromise';
+require('rxjs/add/observable/of');
+require('rxjs/add/operator/do');
 var AppComponent = (function () {
     function AppComponent(_userProvider) {
         this._userProvider = _userProvider;
@@ -20,7 +30,6 @@ var AppComponent = (function () {
         this._userProvider.logOut();
     };
     AppComponent = __decorate([
-        // Load all features
         core_1.Component({
             selector: 'banking-app',
             template: "\n        <div>\n        <nav class=\"navbar navbar-default\">\n             <div class=\"container-fluid\">\n                <a class=\"navbar-brand\">{{title}}</a>\n                <ul class=\"nav navbar-nav\">\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a routerLink=\"/accounts\" routerLinkActive=\"active\">Accounts</a></li>\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a routerLink=\"/contact\" routerLinkActive=\"active\">Contact Us</a></li>\n                    <li *ngIf='this._userProvider.isLoggedIn()' ><a href=\"#\" (click)=\"onLogOut()\">Log Out</a></li>\n                </ul>\n            </div>\n        </nav>\n        </div>\n        <div class=\"container\">\n            <router-outlet></router-outlet>\n        </div>\n        "

@@ -14,7 +14,7 @@ import { UserProvider } from '../providers/user-provider';
       </form>
    `
 })
-export class LoginComponent { 
+export class LoginPage { 
     pageTitle: string = 'Sign In';
     userName: string = "";
     password: string = "";

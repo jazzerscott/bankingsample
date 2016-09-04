@@ -10,27 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var account_provider_1 = require('../providers/account-provider');
-var AccountSummaryComponent = (function () {
-    function AccountSummaryComponent(_accountProvider) {
+var AccountSummaryPage = (function () {
+    function AccountSummaryPage(_accountProvider) {
         this._accountProvider = _accountProvider;
         this.pageTitle = 'Account Summary';
     }
-    AccountSummaryComponent.prototype.setAccounts = function (accounts) {
+    AccountSummaryPage.prototype.setAccounts = function (accounts) {
         this.deposits = accounts.filter(function (value) { return value.accountType === "Savings" || value.accountType === "Checking"; });
         this.loans = accounts.filter(function (value) { return value.accountType === "Loan"; });
     };
-    AccountSummaryComponent.prototype.ngOnInit = function () {
+    AccountSummaryPage.prototype.ngOnInit = function () {
         var _this = this;
         this._accountProvider.getAccounts()
             .subscribe(function (accounts) { return _this.setAccounts(accounts); }, function (error) { return _this.errorMessage = error; });
     };
-    AccountSummaryComponent = __decorate([
+    AccountSummaryPage = __decorate([
         core_1.Component({
             template: "\n    <div>\n        <bank-account-list title=\"Deposit Accounts\"  [accounts]='deposits'></bank-account-list>\n        <bank-account-list title=\"Loans\" [accounts]='loans'></bank-account-list>\n    </div>\n   "
         }), 
         __metadata('design:paramtypes', [account_provider_1.AccountProvider])
-    ], AccountSummaryComponent);
-    return AccountSummaryComponent;
+    ], AccountSummaryPage);
+    return AccountSummaryPage;
 }());
-exports.AccountSummaryComponent = AccountSummaryComponent;
+exports.AccountSummaryPage = AccountSummaryPage;
 //# sourceMappingURL=account-summary.js.map

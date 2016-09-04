@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var PageNotFoundComponent = (function () {
-    function PageNotFoundComponent() {
+var PageNotFoundPage = (function () {
+    function PageNotFoundPage() {
     }
-    PageNotFoundComponent = __decorate([
+    PageNotFoundPage = __decorate([
         core_1.Component({
             template: '<h1>Page not found</h1>'
         }), 
         __metadata('design:paramtypes', [])
-    ], PageNotFoundComponent);
-    return PageNotFoundComponent;
+    ], PageNotFoundPage);
+    return PageNotFoundPage;
 }());
-exports.PageNotFoundComponent = PageNotFoundComponent;
+exports.PageNotFoundPage = PageNotFoundPage;
 //# sourceMappingURL=page-not-found.js.map

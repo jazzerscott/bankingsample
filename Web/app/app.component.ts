@@ -1,8 +1,18 @@
 import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { UserProvider } from "./providers/user-provider"
-import 'rxjs/Rx';   // Load all features
+//import 'rxjs/Rx';   // Load all features
+import 'rxjs/add/observable/throw';
 
+// Operators
+import 'rxjs/add/operator/catch';
+//import 'rxjs/add/operator/debounceTime';
+//import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/switchMap';
+//import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
 
 @Component({
     selector: 'banking-app',

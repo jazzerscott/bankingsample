@@ -22,7 +22,7 @@ import { IAccount } from '../providers/account';
                     <tr *ngFor='let account of accounts'>
                         
                         <td> 
-                            {{account.id}}
+                            <a href="/account-history/{{account.id}}">{{account.id}}</a>
                         </td>
                         <td>{{ account.description }}</td>
                         <td>{{ account.accountType}} </td>

@@ -21,5 +21,11 @@ namespace Prototype.Banking.Controllers
             User user = UserManager.GetCurrentUser();
             return Ok(BankingProvider.GetInstance().GetAccounts(user));
         }
+        [Route("history/{accountId}")]
+        public IHttpActionResult GetHistory(string accountId)
+        {
+            User user = UserManager.GetCurrentUser();
+            return Ok(BankingProvider.GetInstance().GetAccountHistory(user,accountId));
+        }
     }
 }

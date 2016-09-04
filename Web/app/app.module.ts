@@ -6,17 +6,18 @@ import { AccountProvider } from './providers/account-provider';
 import { UserProvider } from './providers/user-provider';
 import { routing, appRoutingProviders } from './app.routing';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { AccountSummaryComponent } from './pages/account-summary';
+import { AccountSummaryPage } from './pages/account-summary';
+import { AccountHistoryPage } from './pages/account-history';
 import { AccountDetailComponent } from './pages/account-detail';
-import { PageNotFoundComponent } from './pages/page-not-found';
-import { ContactUsComponent } from './pages/contact-us';
+import { PageNotFoundPage } from './pages/page-not-found';
+import { ContactUsPage } from './pages/contact-us';
 import { AccountListComponent } from './components/account-list';
-import { LoginComponent } from './pages/login';
+import { LoginPage } from './pages/login';
 
 @NgModule({
    imports: [BrowserModule, routing, FormsModule],
-   declarations: [AppComponent, PageNotFoundComponent, AccountDetailComponent, 
-    ContactUsComponent, AccountSummaryComponent, AccountListComponent, LoginComponent],
+   declarations: [AppComponent, PageNotFoundPage, AccountDetailComponent, 
+    ContactUsPage, AccountSummaryPage, AccountListComponent, LoginPage, AccountHistoryPage],
    bootstrap: [ AppComponent ],
    providers: [ appRoutingProviders, AccountProvider, HTTP_PROVIDERS, UserProvider ],
 

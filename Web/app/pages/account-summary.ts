@@ -11,7 +11,7 @@ import { AccountListComponent } from '../components/account-list';
     </div>
    `
 })
-export class AccountSummaryComponent implements OnInit{ 
+export class AccountSummaryPage implements OnInit{ 
     pageTitle: string = 'Account Summary';
     errorMessage: string;
     //accounts: IAccount[];

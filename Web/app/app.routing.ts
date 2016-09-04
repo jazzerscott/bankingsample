@@ -1,11 +1,12 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule }   from '@angular/router';
-import { AccountSummaryComponent } from './pages/account-summary';
-import { AccountDetailComponent } from './pages/account-detail';
-import { PageNotFoundComponent } from './pages/page-not-found';
-import { ContactUsComponent } from './pages/contact-us';
-import { LoginComponent } from './pages/login';
+import { AccountSummaryPage } from './pages/account-summary';
+
+import { PageNotFoundPage } from './pages/page-not-found';
+import { ContactUsPage } from './pages/contact-us';
+import { LoginPage } from './pages/login';
 import { UserProvider } from './providers/user-provider';
+import { AccountHistoryPage } from './pages/account-history';
 
 const appRoutes: Routes = [
     {
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
         pathMatch: 'full',
         canActivate: [UserProvider]
     },
-    {   path: 'contact', component: ContactUsComponent, 
+    {   path: 'contact', component: ContactUsPage, 
         data: {
             title: 'Contact Us'
         },
@@ -22,16 +23,24 @@ const appRoutes: Routes = [
     },
     {
         path: 'accounts',
-        component: AccountSummaryComponent,
+        component: AccountSummaryPage,
         
         data: {
             title: 'Account Summary'
         },
         canActivate: [UserProvider]
     },
-    { path: 'accounts/:id', component: AccountDetailComponent, canActivate: [UserProvider]},
-    { path: 'login', component: LoginComponent },
-    { path: '**', component: PageNotFoundComponent }
+    {
+        path: 'account-history/:accountId',
+        component: AccountHistoryPage,
+        
+        data: {
+            title: 'Account History'
+        },
+        canActivate: [UserProvider]
+    },
+    { path: 'login', component: LoginPage },
+    { path: '**', component: PageNotFoundPage }
 ];
 
 export const appRoutingProviders: any[] = [

@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ContactUsComponent = (function () {
-    function ContactUsComponent() {
+var ContactUsPage = (function () {
+    function ContactUsPage() {
     }
-    ContactUsComponent = __decorate([
+    ContactUsPage = __decorate([
         core_1.Component({
             template: '<h1>Contact Us</h1>'
         }), 
         __metadata('design:paramtypes', [])
-    ], ContactUsComponent);
-    return ContactUsComponent;
+    ], ContactUsPage);
+    return ContactUsPage;
 }());
-exports.ContactUsComponent = ContactUsComponent;
+exports.ContactUsPage = ContactUsPage;
 //# sourceMappingURL=contact-us.js.map

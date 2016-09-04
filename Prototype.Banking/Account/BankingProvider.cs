@@ -63,19 +63,86 @@ namespace Prototype.Banking.Account
             return accounts;
         }
 
-        public List<AccountTransaction> GetHistory(string accountID)
+        public List<AccountTransaction> GetAccountHistory(User user,string accountID)
         {
             List<AccountTransaction> trxns = new List<AccountTransaction>();
+            if(user == null)
+            {
+                return trxns;
+            }
             trxns.Add(new AccountTransaction()
             {
                
-                Description = "Payroll Deposit",
+                Description = "Deposit",
                 ID = "123131",
                 Amount=2012.35M,
                 Date = DateTime.Today,
                 TransactionType="Deposit"
             });
-            
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Transfer",
+                ID = "123132",
+                Amount = 1012.35M,
+                Date = DateTime.Today,
+                TransactionType = "Transfer"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Withdrawl",
+                ID = "123133",
+                Amount = 12.35M,
+                Date = DateTime.Today,
+                TransactionType = "Withdrawl"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Fee",
+                ID = "123134",
+                Amount = 2.50M,
+                Date = DateTime.Today,
+                TransactionType = "Withdrawl"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Cash Deposit",
+                ID = "123135",
+                Amount = 9000M,
+                Date = DateTime.Today,
+                TransactionType = "Deposit"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Check # 124",
+                ID = "123136",
+                Amount = 100M,
+                Date = DateTime.Today,
+                TransactionType = "Withdrawal"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "Check #125",
+                ID = "123137",
+                Amount = 555M,
+                Date = DateTime.Today,
+                TransactionType = "Withdrawl"
+            });
+            trxns.Add(new AccountTransaction()
+            {
+
+                Description = "ATM Withdrawal",
+                ID = "123138",
+                Amount = 100M,
+                Date = DateTime.Today,
+                TransactionType = "Withdrawl"
+            });
+
             return trxns;
         }
     }

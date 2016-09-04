@@ -4,10 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { UserProvider } from './user-provider';
 import { IUser } from './user';
 import { IAccount } from './account';
+import { IAccountTransaction } from './account-transaction';
 
 @Injectable()
 export class AccountProvider {
     private _accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
+    private _accountTrxUrl = 'http://localhost/bankingapi/api/banking/history';
     private _accountCache: IAccount[] = null;
     constructor(private _http: Http, private _userProvider: UserProvider) { }
 
@@ -24,6 +26,20 @@ export class AccountProvider {
         return this._http.get(this._accountUrl, options)
             .map((response: Response) => <IAccount[]> response.json())
             .do(data => this._accountCache = data)
+            .catch(this.handleError);
+    }
+
+    getAccountTransactions(accountId: string): Observable<IAccountTransaction[]> {
+        let user = this._userProvider.getCurrentUser();
+        let headers = new Headers();
+        if(user != null) {
+            headers.append('AuthToken', user.authToken);
+        }
+        let options = new RequestOptions({ headers: headers });
+        let url = this._accountTrxUrl+'/'+accountId;
+        console.log(url);
+        return this._http.get(url, options)
+            .map((response: Response) => <IAccountTransaction[]> response.json())
             .catch(this.handleError);
     }
 

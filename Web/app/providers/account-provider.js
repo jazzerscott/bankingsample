@@ -17,6 +17,7 @@ var AccountProvider = (function () {
         this._http = _http;
         this._userProvider = _userProvider;
         this._accountUrl = 'http://localhost/bankingapi/api/banking/accounts';
+        this._accountTrxUrl = 'http://localhost/bankingapi/api/banking/history';
         this._accountCache = null;
     }
     AccountProvider.prototype.getAccounts = function () {
@@ -33,6 +34,19 @@ var AccountProvider = (function () {
         return this._http.get(this._accountUrl, options)
             .map(function (response) { return response.json(); })
             .do(function (data) { return _this._accountCache = data; })
+            .catch(this.handleError);
+    };
+    AccountProvider.prototype.getAccountTransactions = function (accountId) {
+        var user = this._userProvider.getCurrentUser();
+        var headers = new http_1.Headers();
+        if (user != null) {
+            headers.append('AuthToken', user.authToken);
+        }
+        var options = new http_1.RequestOptions({ headers: headers });
+        var url = this._accountTrxUrl + '/' + accountId;
+        console.log(url);
+        return this._http.get(url, options)
+            .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     AccountProvider.prototype.getAccountt = function (id) {

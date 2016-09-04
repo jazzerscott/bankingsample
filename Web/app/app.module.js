@@ -17,6 +17,7 @@ var user_provider_1 = require('./providers/user-provider');
 var app_routing_1 = require('./app.routing');
 var http_1 = require('@angular/http');
 var account_summary_1 = require('./pages/account-summary');
+var account_history_1 = require('./pages/account-history');
 var account_detail_1 = require('./pages/account-detail');
 var page_not_found_1 = require('./pages/page-not-found');
 var contact_us_1 = require('./pages/contact-us');
@@ -28,8 +29,8 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, page_not_found_1.PageNotFoundComponent, account_detail_1.AccountDetailComponent,
-                contact_us_1.ContactUsComponent, account_summary_1.AccountSummaryComponent, account_list_1.AccountListComponent, login_1.LoginComponent],
+            declarations: [app_component_1.AppComponent, page_not_found_1.PageNotFoundPage, account_detail_1.AccountDetailComponent,
+                contact_us_1.ContactUsPage, account_summary_1.AccountSummaryPage, account_list_1.AccountListComponent, login_1.LoginPage, account_history_1.AccountHistoryPage],
             bootstrap: [app_component_1.AppComponent],
             providers: [app_routing_1.appRoutingProviders, account_provider_1.AccountProvider, http_1.HTTP_PROVIDERS, user_provider_1.UserProvider],
         }), 
